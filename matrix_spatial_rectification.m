@@ -6,8 +6,7 @@ tower = load('PixelPositionsTower.mat');
 Xrect = tower.pixelPos.r10171230.X;
 Yrect = tower.pixelPos.r10171230.Y;
 tiff = imread(file);
-% tiff = tiff16/2^2;
-% maxVal = 2^14;
+
 %% Round to cm resolution (2) or 10 cm resolution (1) or m resolution (0)
 res = 1;
 Xrect_rounded = round(Xrect, res);
@@ -23,8 +22,6 @@ minY = round(floor(min(min(Yrect_rounded))), 0)*10^res;
 
 %%Make a new matrix of size (minX, minY), (maxX, maxY) to put tiff pixels
 %Initialize as a matrix of NaN
-% rect_matrix(1:Xdim, 1:Ydim) = maxVal;
-% rect_matrix = [];
 rect_matrix(minX:maxX, minY:maxY) = NaN;
 for row = 1:size(tiff, 1)
     for column = 1:size(tiff, 2)

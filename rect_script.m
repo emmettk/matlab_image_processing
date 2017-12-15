@@ -16,6 +16,7 @@ imwrite(rm_cm16, 'output_tiff_uint16.tif', 'Resolution', 1000, 'Compression', 'n
 
 %% Cut to FRF coordinates (50, 400) to (300, 700)
 rm_cm_cut = rm_cm(500:3000,4000:7000);
+%rm_cm_cut =rm_cm;
 interp = fillmissing(rm_cm_cut, 'previous',1);
 image(rm_cm, 'CDataMapping', 'scaled');
 colorbar
